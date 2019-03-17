@@ -70,8 +70,6 @@ namespace EFGUI
                 sv.NgaySinh = dtpNgaySinh.Value;
                 sv.NoiSinh = txtNoiSinh.Text;
                 sv.MaKhoa = cbMaKhoa.Text;
-
-
                 db.DMSinhViens.Add(sv);
                 db.SaveChanges();
                 Load();
@@ -144,7 +142,7 @@ namespace EFGUI
 
         void Khoa()
         {
-            txtMaSV.ReadOnly = false;
+            //txtMaSV.ReadOnly = false;
             txtHoTen.ReadOnly = true;
             cbGioiTinh.Enabled = false;
             dtpNgaySinh.Enabled = false;
@@ -156,7 +154,7 @@ namespace EFGUI
         {
             btnSave.Enabled = true;
 
-            txtMaSV.ReadOnly = true;
+            txtMaSV.ReadOnly = false;
             txtHoTen.ReadOnly = false;
             cbGioiTinh.Enabled = true;
             dtpNgaySinh.Enabled = true;

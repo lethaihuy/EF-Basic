@@ -12,3 +12,4 @@ D:\Code\dotNet\EF\EFGUI\EFGUI\obj\Debug\EFGUI.csproj.CoreCompileInputs.cache
 D:\Code\dotNet\EF\EFGUI\EFGUI\obj\Debug\EFGUI.csproj.CopyComplete
 D:\Code\dotNet\EF\EFGUI\EFGUI\obj\Debug\EFGUI.exe
 D:\Code\dotNet\EF\EFGUI\EFGUI\obj\Debug\EFGUI.pdb
+D:\Code\dotNet\EF\EFGUI\EFGUI\obj\Debug\EFGUI.csprojAssemblyReference.cache
