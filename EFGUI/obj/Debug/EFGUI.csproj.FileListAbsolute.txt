@@ -1,0 +1,14 @@
+D:\Code\dotNet\EF\EFGUI\EFGUI\bin\Debug\EFGUI.exe.config
+D:\Code\dotNet\EF\EFGUI\EFGUI\bin\Debug\EFGUI.exe
+D:\Code\dotNet\EF\EFGUI\EFGUI\bin\Debug\EFGUI.pdb
+D:\Code\dotNet\EF\EFGUI\EFGUI\bin\Debug\EntityFramework.dll
+D:\Code\dotNet\EF\EFGUI\EFGUI\bin\Debug\EntityFramework.SqlServer.dll
+D:\Code\dotNet\EF\EFGUI\EFGUI\bin\Debug\EntityFramework.xml
+D:\Code\dotNet\EF\EFGUI\EFGUI\bin\Debug\EntityFramework.SqlServer.xml
+D:\Code\dotNet\EF\EFGUI\EFGUI\obj\Debug\EFGUI.formMain.resources
+D:\Code\dotNet\EF\EFGUI\EFGUI\obj\Debug\EFGUI.Properties.Resources.resources
+D:\Code\dotNet\EF\EFGUI\EFGUI\obj\Debug\EFGUI.csproj.GenerateResource.cache
+D:\Code\dotNet\EF\EFGUI\EFGUI\obj\Debug\EFGUI.csproj.CoreCompileInputs.cache
+D:\Code\dotNet\EF\EFGUI\EFGUI\obj\Debug\EFGUI.csproj.CopyComplete
+D:\Code\dotNet\EF\EFGUI\EFGUI\obj\Debug\EFGUI.exe
+D:\Code\dotNet\EF\EFGUI\EFGUI\obj\Debug\EFGUI.pdb

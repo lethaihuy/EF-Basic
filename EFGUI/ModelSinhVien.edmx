@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SinhVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DMSinhVien">
+          <Key>
+            <PropertyRef Name="MaSV" />
+          </Key>
+          <Property Name="MaSV" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="HoTenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phai" Type="nchar" MaxLength="7" />
+          <Property Name="NgaySinh" Type="datetime" Nullable="false" />
+          <Property Name="NoiSinh" Type="nvarchar" MaxLength="20" />
+          <Property Name="MaKhoa" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Khoa">
+          <Key>
+            <PropertyRef Name="MaKhoa" />
+          </Key>
+          <Property Name="MaKhoa" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="TenKhoa" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__DMSinhVie__MaKho__4E88ABD4">
+          <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+          <End Role="DMSinhVien" Type="Self.DMSinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="MaKhoa" />
+            </Principal>
+            <Dependent Role="DMSinhVien">
+              <PropertyRef Name="MaKhoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SinhVienModelStoreContainer">
+          <EntitySet Name="DMSinhVien" EntityType="Self.DMSinhVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Khoa" EntityType="Self.Khoa" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DMSinhVie__MaKho__4E88ABD4" Association="Self.FK__DMSinhVie__MaKho__4E88ABD4">
+            <End Role="Khoa" EntitySet="Khoa" />
+            <End Role="DMSinhVien" EntitySet="DMSinhVien" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SinhVienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SinhVienEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DMSinhViens" EntityType="SinhVienModel.DMSinhVien" />
+          <EntitySet Name="Khoas" EntityType="SinhVienModel.Khoa" />
+          <AssociationSet Name="FK__DMSinhVie__MaKho__4E88ABD4" Association="SinhVienModel.FK__DMSinhVie__MaKho__4E88ABD4">
+            <End Role="Khoa" EntitySet="Khoas" />
+            <End Role="DMSinhVien" EntitySet="DMSinhViens" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DMSinhVien">
+          <Key>
+            <PropertyRef Name="MaSV" />
+          </Key>
+          <Property Name="MaSV" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="HoTenSV" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phai" Type="String" MaxLength="7" FixedLength="true" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NoiSinh" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MaKhoa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Khoa" Relationship="SinhVienModel.FK__DMSinhVie__MaKho__4E88ABD4" FromRole="DMSinhVien" ToRole="Khoa" />
+        </EntityType>
+        <EntityType Name="Khoa">
+          <Key>
+            <PropertyRef Name="MaKhoa" />
+          </Key>
+          <Property Name="MaKhoa" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="TenKhoa" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DMSinhViens" Relationship="SinhVienModel.FK__DMSinhVie__MaKho__4E88ABD4" FromRole="Khoa" ToRole="DMSinhVien" />
+        </EntityType>
+        <Association Name="FK__DMSinhVie__MaKho__4E88ABD4">
+          <End Type="SinhVienModel.Khoa" Role="Khoa" Multiplicity="0..1" />
+          <End Type="SinhVienModel.DMSinhVien" Role="DMSinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="MaKhoa" />
+            </Principal>
+            <Dependent Role="DMSinhVien">
+              <PropertyRef Name="MaKhoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SinhVienModelStoreContainer" CdmEntityContainer="SinhVienEntities">
+          <EntitySetMapping Name="DMSinhViens">
+            <EntityTypeMapping TypeName="SinhVienModel.DMSinhVien">
+              <MappingFragment StoreEntitySet="DMSinhVien">
+                <ScalarProperty Name="MaKhoa" ColumnName="MaKhoa" />
+                <ScalarProperty Name="NoiSinh" ColumnName="NoiSinh" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="Phai" ColumnName="Phai" />
+                <ScalarProperty Name="HoTenSV" ColumnName="HoTenSV" />
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Khoas">
+            <EntityTypeMapping TypeName="SinhVienModel.Khoa">
+              <MappingFragment StoreEntitySet="Khoa">
+                <ScalarProperty Name="TenKhoa" ColumnName="TenKhoa" />
+                <ScalarProperty Name="MaKhoa" ColumnName="MaKhoa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

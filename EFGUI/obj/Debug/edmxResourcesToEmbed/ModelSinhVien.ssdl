@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SinhVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DMSinhVien">
+    <Key>
+      <PropertyRef Name="MaSV" />
+    </Key>
+    <Property Name="MaSV" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="HoTenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phai" Type="nchar" MaxLength="7" />
+    <Property Name="NgaySinh" Type="datetime" Nullable="false" />
+    <Property Name="NoiSinh" Type="nvarchar" MaxLength="20" />
+    <Property Name="MaKhoa" Type="char" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="Khoa">
+    <Key>
+      <PropertyRef Name="MaKhoa" />
+    </Key>
+    <Property Name="MaKhoa" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="TenKhoa" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__DMSinhVie__MaKho__4E88ABD4">
+    <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+    <End Role="DMSinhVien" Type="Self.DMSinhVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="MaKhoa" />
+      </Principal>
+      <Dependent Role="DMSinhVien">
+        <PropertyRef Name="MaKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SinhVienModelStoreContainer">
+    <EntitySet Name="DMSinhVien" EntityType="Self.DMSinhVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Khoa" EntityType="Self.Khoa" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__DMSinhVie__MaKho__4E88ABD4" Association="Self.FK__DMSinhVie__MaKho__4E88ABD4">
+      <End Role="Khoa" EntitySet="Khoa" />
+      <End Role="DMSinhVien" EntitySet="DMSinhVien" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

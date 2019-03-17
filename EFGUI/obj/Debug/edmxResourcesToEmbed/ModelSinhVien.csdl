@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SinhVienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SinhVienEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DMSinhViens" EntityType="SinhVienModel.DMSinhVien" />
+    <EntitySet Name="Khoas" EntityType="SinhVienModel.Khoa" />
+    <AssociationSet Name="FK__DMSinhVie__MaKho__4E88ABD4" Association="SinhVienModel.FK__DMSinhVie__MaKho__4E88ABD4">
+      <End Role="Khoa" EntitySet="Khoas" />
+      <End Role="DMSinhVien" EntitySet="DMSinhViens" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DMSinhVien">
+    <Key>
+      <PropertyRef Name="MaSV" />
+    </Key>
+    <Property Name="MaSV" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="HoTenSV" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phai" Type="String" MaxLength="7" FixedLength="true" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NoiSinh" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MaKhoa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Khoa" Relationship="SinhVienModel.FK__DMSinhVie__MaKho__4E88ABD4" FromRole="DMSinhVien" ToRole="Khoa" />
+  </EntityType>
+  <EntityType Name="Khoa">
+    <Key>
+      <PropertyRef Name="MaKhoa" />
+    </Key>
+    <Property Name="MaKhoa" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="TenKhoa" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DMSinhViens" Relationship="SinhVienModel.FK__DMSinhVie__MaKho__4E88ABD4" FromRole="Khoa" ToRole="DMSinhVien" />
+  </EntityType>
+  <Association Name="FK__DMSinhVie__MaKho__4E88ABD4">
+    <End Type="SinhVienModel.Khoa" Role="Khoa" Multiplicity="0..1" />
+    <End Type="SinhVienModel.DMSinhVien" Role="DMSinhVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="MaKhoa" />
+      </Principal>
+      <Dependent Role="DMSinhVien">
+        <PropertyRef Name="MaKhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
